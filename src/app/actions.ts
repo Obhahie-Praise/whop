@@ -15,8 +15,8 @@ export async function joinWaitlist(email: string, source: string | null) {
       },
     });
     return { success: true };
-  } catch (error: any) {
-    if (error.code === "P2002") {
+  } catch (error) {
+    if (error && typeof error === "object" && "code" in error && error.code === "P2002") {
       return { success: false, error: "This email is already on the waitlist!" };
     }
     return { success: false, error: "Failed to join. Please try again." };

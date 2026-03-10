@@ -10,8 +10,7 @@ import {
   Radio,
   Twitter,
 } from "lucide-react";
-import Plasma from "@/components/Plasma";
-import Orb from "@/components/Orb";
+import Image from "next/image";
 import React, { useState, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { joinWaitlist } from "./actions";
@@ -96,21 +95,29 @@ const WaitlistContent = () => {
           <div className="flex items-center justify-center my-5">
             <div className="">
               <div className="relative">
-                <img
-                  src="https://plus.unsplash.com/premium_photo-1689977968861-9c91dbb16049?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                  alt=""
-                  className="h-7 w-7 rounded-full border border-zinc-200 dark:border-zinc-800/60 absolute top-0 left-0"
-                />
-                <img
-                  src="https://images.unsplash.com/photo-1595211877493-41a4e5f236b3?q=80&w=715&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                  alt=""
-                  className="h-7 w-7 rounded-full border border-zinc-200 dark:border-zinc-800/60 absolute top-0 left-4"
-                />
-                <img
-                  src="https://images.unsplash.com/photo-1580518324671-c2f0833a3af3?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                  alt=""
-                  className="h-7 w-7 rounded-full border border-zinc-200 dark:border-zinc-800/60 absolute top-0 left-8"
-                />
+                <div className="h-7 w-20 relative">
+                  <Image
+                    src="https://plus.unsplash.com/premium_photo-1689977968861-9c91dbb16049?q=80&w=1170&auto=format&fit=crop"
+                    alt="User 1"
+                    width={28}
+                    height={28}
+                    className="h-7 w-7 rounded-full border border-zinc-200 dark:border-zinc-800/60 absolute top-0 left-0 object-cover"
+                  />
+                  <Image
+                    src="https://images.unsplash.com/photo-1595211877493-41a4e5f236b3?q=80&w=715&auto=format&fit=crop"
+                    alt="User 2"
+                    width={28}
+                    height={28}
+                    className="h-7 w-7 rounded-full border border-zinc-200 dark:border-zinc-800/60 absolute top-0 left-4 object-cover"
+                  />
+                  <Image
+                    src="https://images.unsplash.com/photo-1580518324671-c2f0833a3af3?q=80&w=1974&auto=format&fit=crop"
+                    alt="User 3"
+                    width={28}
+                    height={28}
+                    className="h-7 w-7 rounded-full border border-zinc-200 dark:border-zinc-800/60 absolute top-0 left-8 object-cover"
+                  />
+                </div>
               </div>
               <p className="text-zinc-500 dark:text-white/40 text-sm my-2 ml-18">
                 Join 500+ already onboard!
@@ -118,7 +125,7 @@ const WaitlistContent = () => {
             </div>
           </div>
         </div>
-        <div className="grid grid-cols-3 gap-8 mx-60 mt-80 mb-20 text-zinc-900 dark:text-white">
+        <div className="grid grid-cols-3 gap-8 mx-60 mt-40 mb-20 text-zinc-900 dark:text-white">
           <div className="relative bg-zinc-50 dark:bg-neutral-700/20 backdrop-blur-2xl h-45 flex items-center justify-center border-zinc-200 dark:border-zinc-800/60 border rounded-2xl text-2xl text-center font-medium shadow-sm dark:shadow-none transition-transform hover:scale-[1.02]">
             <div className="text-white dark:text-black bg-zinc-900 dark:bg-zinc-200 p-6 rounded-full border border-white dark:border-zinc-900 absolute -top-10 left-1/2 -translate-x-1/2 shadow-xl">
               <Clock className="" strokeWidth={1.5} size={25} />

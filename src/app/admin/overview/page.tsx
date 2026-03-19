@@ -59,7 +59,7 @@ export default async function OverviewPage() {
             className="bg-white dark:bg-zinc-900/40 backdrop-blur-2xl border-0.5 border-zinc-100 dark:border-zinc-800/60 px-6 py-4 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 group"
           >
             <div className="flex justify-between items-start mb-4">
-              <p className="text-zinc-500 dark:text-zinc-400 text-sm font-medium">{card.title}</p>
+              <p className="text-zinc-500 dark:text-zinc-400 text-sm special-font font-semibold tracking-wide">{card.title}</p>
               <div className="p-2 bg-zinc-100 dark:bg-zinc-800/50 rounded-lg group-hover:scale-110 transition-transform duration-300">
                 {card.icon}
               </div>

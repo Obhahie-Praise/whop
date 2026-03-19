@@ -43,7 +43,7 @@ const WaitlistHeader = () => {
         />
       </div>
       <div className="flex space-x-2">
-        <Link href="/" className="flex items-center gap-2 px-4 md:px-6 py-1.5 transition-colors rounded-full text-black dark:text-white border-zinc-600 hover:border-zinc-300 dark:hover:border-zinc-200 dark:border-zinc-400 border">
+        <Link href="/" className="flex items-center gap-2 px-4 md:px-6 py-1.5 transition-colors rounded-full text-black bg-zinc-100 dark:bg-zinc-700/20 dark:text-white border-zinc-200 dark:border-zinc-700/30 hover:border-zinc-300 dark:hover:border-zinc-700 border">
           <p className="hidden sm:block">Check us out on </p>
           <Twitter size={20} strokeWidth={1.4} />
         </Link>

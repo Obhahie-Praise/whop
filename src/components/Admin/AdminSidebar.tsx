@@ -24,7 +24,7 @@ const AdminSidebar = () => {
                 height={30}
                 className="rounded-full"
             />
-            <h1 className='text-lg font-medium special-font tracking-wide'>Whop Admin</h1>
+            <h1 className='text-lg font-semibold special-font tracking-wide'>Whop Admin</h1>
         </div>
         {/* LayoutDashboard theme changer */}
         <div className="w-fit mx-auto my-2.5 border border-zinc-200 dark:border-zinc-800/60 rounded-full">

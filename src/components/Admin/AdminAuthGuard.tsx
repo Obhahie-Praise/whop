@@ -101,7 +101,7 @@ export default function AdminAuthGuard({ children }: { children: React.ReactNode
 
           <button
             type="submit"
-            className="w-full py-2 bg-blue-900 dark:bg-blue-800 text-white dark:text-black rounded-lg font-medium hover:opacity-90 transition-all active:scale-[0.98]"
+            className="w-full py-2 bg-blue-900 dark:bg-blue-800 text-white rounded-lg font-medium hover:opacity-90 transition-all active:scale-[0.98]"
           >
             Authenticate
           </button>

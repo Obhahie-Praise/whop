@@ -1,7 +1,7 @@
 "use server";
 
 import { prisma } from "@/lib/prisma";
-import { unstable_cache, revalidatePath } from "next/cache";
+import { unstable_cache, revalidatePath, revalidateTag } from "next/cache";
 import { startOfDay, subDays, startOfMonth, isSameDay, differenceInDays } from "date-fns";
 
 export async function joinWaitlist(email: string, source: string | null) {
@@ -162,7 +162,7 @@ export async function getAdminMetrics() {
 
 export async function refreshAdminMetrics() {
   try {
-    revalidateTag("admin-metrics");
+    revalidatePath("/admin/overview");
     return { success: true };
   } catch (error) {
     console.error("Error refreshing admin metrics:", error);

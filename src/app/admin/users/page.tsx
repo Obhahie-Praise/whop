@@ -228,7 +228,7 @@ const UsersPage = () => {
                   </td>
                   <td className="p-4">
                     <div className="flex flex-col">
-                      <span className="font-medium text-zinc-900 dark:text-zinc-100 capitalize">{user.email.split("@")[0]}</span>
+                      <span className="font-medium text-zinc-900 dark:text-zinc-100">{user.email}</span>
                       <span className="text-xs text-zinc-500 dark:text-zinc-500">Waitlist Registered</span>
                     </div>
                   </td>

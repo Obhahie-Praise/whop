@@ -1,9 +1,14 @@
 import React from 'react';
-import { getAdminMetrics } from "@/app/actions";
+import { getAdminMetrics, getGrowthMetrics } from "@/app/actions";
 import { TrendingUp, TrendingDown, Users, Target, Calendar, Flame } from "lucide-react";
+import UserGrowthChart from "@/components/Admin/UserGrowthChart";
 
 export default async function OverviewPage() {
-  const res = await getAdminMetrics();
+  const [res, growthRes] = await Promise.all([
+    getAdminMetrics(),
+    getGrowthMetrics()
+  ]);
+
   const metrics = (res.success && res.metrics) ? res.metrics : {
     totalUsers: 0,
     totalUserTrend: 0,
@@ -13,6 +18,8 @@ export default async function OverviewPage() {
     joinedTodayTrend: 0,
     streak: 0
   };
+
+  const growthData = (growthRes.success && growthRes.data) ? growthRes.data : [];
 
   const cards = [
     {
@@ -81,6 +88,8 @@ export default async function OverviewPage() {
           </div>
         ))}
       </section>
+
+      <UserGrowthChart data={growthData} />
     </div>
   );
 }

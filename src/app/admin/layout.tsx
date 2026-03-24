@@ -9,7 +9,7 @@ const AdminLayout = ({children}: {children: React.ReactNode}) => {
           <nav>
               <AdminSidebar />
           </nav>
-          <main className='flex-1'>
+          <main className='flex-1 max-w-7xl mx-auto'>
               {children}
           </main>
       </div>

@@ -2,7 +2,17 @@
 
 import { prisma } from "@/lib/prisma";
 import { unstable_cache, revalidatePath, revalidateTag } from "next/cache";
-import { startOfDay, subDays, startOfMonth, isSameDay, differenceInDays } from "date-fns";
+import { 
+  startOfDay, 
+  endOfDay,
+  subDays, 
+  startOfMonth, 
+  endOfMonth,
+  eachDayOfInterval,
+  format,
+  isSameDay, 
+  differenceInDays 
+} from "date-fns";
 
 export async function joinWaitlist(email: string, source: string | null) {
   if (!email || !email.includes("@")) {
@@ -146,6 +156,55 @@ const getCachedAdminMetrics = unstable_cache(
   ["admin-metrics"],
   { tags: ["admin-metrics"], revalidate: 3600 }
 );
+
+const getCachedGrowthMetrics = unstable_cache(
+  async () => {
+    const now = new Date();
+    const start = startOfMonth(now);
+    const end = endOfMonth(now);
+    
+    // Get all days in current month
+    const days = eachDayOfInterval({ start, end });
+
+    const growthData = await Promise.all(
+      days.map(async (day) => {
+        const dayStart = startOfDay(day);
+        const dayEnd = endOfDay(day);
+        
+        const count = await prisma.waitlist.count({
+          where: {
+            joinedAt: {
+              gte: dayStart,
+              lte: dayEnd,
+            },
+          },
+        });
+        
+        return {
+          month: format(day, "MMM d"), // e.g., "Mar 1"
+          users: count,
+        };
+      })
+    );
+
+    return growthData;
+  },
+  ["growth-metrics-daily"],
+  { tags: ["growth-metrics"], revalidate: 3600 }
+);
+
+export async function getGrowthMetrics() {
+  try {
+    const data = await getCachedGrowthMetrics();
+    return {
+      success: true,
+      data
+    };
+  } catch (error) {
+    console.error("Error fetching growth metrics:", error);
+    return { success: false, error: "Failed to fetch growth metrics." };
+  }
+}
 
 export async function getAdminMetrics() {
   try {
